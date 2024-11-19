@@ -1,4 +1,4 @@
-import Task from "../models/Task.js"; // Mock database or ORM model
+import Task from "../models/Task.js"; // ORM model
 import { hasPermission } from "../utils/permissions.js";
 
 export const getTasks = async (req, res) => {
