@@ -1,0 +1,71 @@
+{
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Task 1",
+        "authorId": 1, 
+        "department": "HR",
+        "invitedUsers": [] 
+      },
+      {
+        "id": 2,
+        "title": "Task 2",
+        "authorId": 2, 
+        "department": "Finance",
+        "invitedUsers": [3] 
+      },
+      {
+        "id": 3,
+        "title": "Task 3",
+        "authorId": 3, 
+        "department": "HR",
+        "invitedUsers": [1] 
+      }
+    ],
+    "records": [
+      {
+        "id": 1,
+        "content": "Employee Record #1",
+        "authorId": 1, 
+        "status": "completed",
+        "invitedUsers": [3] 
+      },
+      {
+        "id": 2,
+        "content": "Employee Record #2",
+        "authorId": 3, 
+        "status": "in-progress",
+        "invitedUsers": [1] 
+      },
+      {
+        "id": 3,
+        "content": "Employee Record #3",
+        "authorId": 2, 
+        "status": "completed",
+        "invitedUsers": [3] 
+      }
+    ],
+    "users": [
+      {
+        "id": 1,
+        "name": "Alice",
+        "roles": ["admin"],
+        "department": "HR",
+        "blockedBy": []
+      },
+      {
+        "id": 2,
+        "name": "Bob",
+        "roles": ["moderator"],
+        "department": "Finance",
+        "blockedBy": [3]
+      },
+      {
+        "id": 3,
+        "name": "Charlie",
+        "roles": ["user"],
+        "department": "HR",
+        "blockedBy": []
+      }
+    ]
+  }
