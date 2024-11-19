@@ -28,7 +28,7 @@ const Task = {
   // Create a new task
   create: async (newTask) => {
     try {
-      const response = await axios.task(`${BASE_URL}/tasks`, newTask);
+      const response = await axios.post(`${BASE_URL}/tasks`, newTask);
       return response.status === 200 ? response.data : null;
     } catch (error) {
       console.error("Error creating task:", error);

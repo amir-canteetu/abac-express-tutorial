@@ -32,6 +32,7 @@ export const ROLES = {
       read: (user, task) =>
         task.authorId === user.id || task.invitedUsers.includes(user.id),
       update: (user, task) => task.authorId === user.id,
+      delete: (user, record) => record.authorId === user.id,
     },
     records: {
       create: true,

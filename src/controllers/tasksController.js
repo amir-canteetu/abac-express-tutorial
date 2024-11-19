@@ -1,8 +1,5 @@
-import axios from "axios";
 import Task from "../models/Task.js"; // Mock database or ORM model
 import { hasPermission } from "../utils/permissions.js";
-
-const BASE_URL = process.env.BASE_URL || "http://localhost:3001";
 
 export const getTasks = async (req, res) => {
   try {
@@ -13,7 +10,9 @@ export const getTasks = async (req, res) => {
     const tasks = await Task.findAll();
     res.json(tasks);
   } catch (err) {
-    res.status(500).json({ error: "Failed to fetch tasks" });
+    res
+      .status(500)
+      .json({ error: "Failed to fetch tasks", details: err.message });
   }
 };
 
@@ -27,7 +26,9 @@ export const getTask = async (req, res) => {
     }
     res.json(task);
   } catch (err) {
-    res.status(500).json({ error: "Failed to fetch tasks" });
+    res
+      .status(500)
+      .json({ error: "Failed to fetch tasks", details: err.message });
   }
 };
 
@@ -37,10 +38,12 @@ export const createTask = async (req, res) => {
     if (!user || !hasPermission(user, "tasks", "create")) {
       return res.status(403).json({ error: "Access denied" });
     }
-    const newTask = await axios.post(`${BASE_URL}/tasks`, req.body);
+    const newTask = await Task.create(req.body);
     res.status(201).json(newTask);
   } catch (err) {
-    res.status(500).json({ error: "Failed to create task" });
+    res
+      .status(500)
+      .json({ error: "Failed to create task", details: err.message });
   }
 };
 

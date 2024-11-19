@@ -16,7 +16,7 @@ app.use(express.json());
 
 // Mock user injection middleware
 app.use((req, res, next) => {
-  req.user = { id: 2, name: "Bob", roles: ["moderator"], department: "Finance" }; // Example user
+  req.user = { id: 2, name: "Bob", roles: ["user"], department: "Finance" }; // Example user
   console.log("res:", res.data);
   next();
 });
