@@ -47,7 +47,7 @@ export const ROLES = {
 };
 
 // Utility function to check permissions
-function hasPermission(user, resource, action, data) {
+export const hasPermission = (user, resource, action, data) => {
   return user.roles.some((role) => {
     const permissions = ROLES[role]?.[resource]?.[action];
     if (permissions == null) {
@@ -61,15 +61,4 @@ function hasPermission(user, resource, action, data) {
     // If permission is a function, validate data and evaluate it
     return data != null && permissions(user, data);
   });
-}
-
-export const enforceABAC = (resource, action) => {
-  return (req, res, next) => {
-    const user = req.user; // Assuming user information is attached to req object
-    console.log("res:", res.data);
-    if (!user || !hasPermission(user, resource, action)) {
-      return res.status(403).json({ error: "Access denied" });
-    }
-    next();
-  };
 };
